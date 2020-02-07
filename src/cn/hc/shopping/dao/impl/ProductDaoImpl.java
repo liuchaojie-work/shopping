@@ -50,5 +50,21 @@ public class ProductDaoImpl implements ProductDao{
 			}
 		}
 		return null;
+	}
+	@Override
+	public void delProductById(int id) {
+		// TODO Auto-generated method stub
+		Product product=findProductById(id);
+		if(null!=product) {
+			productList.remove(product);
+			System.out.println("该商品删除成功！");
+		}else {
+			System.out.println("删除失败！，该商品不存在！");
+		}
+	}
+	@Override
+	public void alterProductStockById(int id) {
+		// TODO Auto-generated method stub
+		
 	}	
 }
