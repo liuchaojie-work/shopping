@@ -71,14 +71,16 @@ public class Start {
 			}
 		}while(true);
 	}
+	static CartItemDao cartItemDao = new CartItemDaoImpl();
 	private static void delCartItem() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入商品的编号：");
 		int id = sc.nextInt();
-		CartItemDao cartItemDao = new CartItemDaoImpl();
+		//CartItemDao cartItemDao = new CartItemDaoImpl();
 		cartItemDao.delCartItemById(id);
 	}
+	static ProductDao productDao = new ProductDaoImpl();
 	private static void alterProductStockById() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
@@ -86,7 +88,7 @@ public class Start {
 		int id = sc.nextInt();
 		System.out.println("请输入库存的改变量(入库+num;出库-num)：");
 		int num = sc.nextInt();
-		ProductDao productDao = new ProductDaoImpl();
+		//ProductDao productDao = new ProductDaoImpl();
 		productDao.alterProductStockById(id, num);;
 	}
 	private static void delProductById() {
@@ -94,7 +96,7 @@ public class Start {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("请输入商品的编号：");
 		int id = sc.nextInt();
-		ProductDao productDao = new ProductDaoImpl();
+		//ProductDao productDao = new ProductDaoImpl();
 		productDao.delProductById(id);
 	}
 	//添加购物车条目
@@ -107,7 +109,7 @@ public class Start {
 		System.out.println("请输入要购买的数量：");
 		int amount = sc.nextInt();
 		//根据编号获取商品的其他信息
-		ProductDao productDao = new ProductDaoImpl();
+		//ProductDao productDao = new ProductDaoImpl();
 		Product product = productDao.findProductById(id);
 		if(null==product) {
 			System.out.println("该编号商品不存在，添加购物车失败！");
@@ -115,7 +117,7 @@ public class Start {
 			//构建一个条目
 			CartItem item = new CartItem(id, product.getName(),product.getPrice(),product.getColor(),amount);
 			//调用后台添加条目
-			CartItemDao cartItemDao = new CartItemDaoImpl();
+			//CartItemDao cartItemDao = new CartItemDaoImpl();
 			cartItemDao.addCartItem(item);
 		}		
 	}
@@ -124,7 +126,7 @@ public class Start {
 	private static void showCartItem() {
 		// TODO Auto-generated method stub
 		//从后台获取购物车信息
-		CartItemDao cartItemDao=new CartItemDaoImpl();
+		//CartItemDao cartItemDao=new CartItemDaoImpl();
 		Map<Integer,CartItem> shoppingCart = cartItemDao.findAllCartItem();
 		//在前台输出
 		Collection<CartItem> items = shoppingCart.values();
@@ -157,7 +159,7 @@ public class Start {
 		int stock = sc.nextInt();
 		//将商品信息写入后台
 		Product product = new Product(id, name, price, color, stock);
-		ProductDao productDao = new ProductDaoImpl();
+		//ProductDao productDao = new ProductDaoImpl();
 		productDao.addProduct(product);
 		//输出结果
 		//System.out.println("添加成功！");
@@ -171,7 +173,7 @@ public class Start {
 		System.out.println("请输入要查询的商品的编号：");
 		int id = num.nextInt();
 		//获取该编号的商品信息
-		ProductDao productDao = new ProductDaoImpl();
+		//ProductDao productDao = new ProductDaoImpl();
 		Product product = productDao.findProductById(id);
 		//输出商品信息
 		if(null==product) {
@@ -189,7 +191,7 @@ public class Start {
 	 */
 	public static void showAllProduct() {
 		//获取后台的商品信息
-		ProductDao productDao = new ProductDaoImpl();
+		//ProductDao productDao = new ProductDaoImpl();
 		List<Product> productList = productDao.findAllProduct();
 		//输出商品信息
 		System.out.println("商品编号\t商品名称\t商品价格\t商品颜色\t商品库存");
