@@ -13,6 +13,10 @@ public class CartItemDaoImpl implements CartItemDao{
 	 * 添加条目到购物车
 	 * @param item
 	 */
+	static {
+		shoppingCart.put(1, new CartItem(1, "钢笔", 10, "黑色", 2));
+		shoppingCart.put(2, new CartItem(2, "本子", 1, "白色", 10));
+	}
 	public void addCartItem(CartItem item) {
 		//判断编号的条目是否存在
 		CartItem item2=shoppingCart.get(item.getId());
@@ -29,9 +33,19 @@ public class CartItemDaoImpl implements CartItemDao{
 	 * @return
 	 */
 	public Map<Integer,CartItem> findAllCartItem(){
-//		shoppingCart.put(1, new CartItem(1, "钢笔", 10, "黑色", 2));
-//		shoppingCart.put(2, new CartItem(2, "本子", 1, "白色", 10));
+		
 		return shoppingCart;
+	}
+	@Override
+	public void delCartItemById(int id) {
+		// TODO Auto-generated method stub
+		CartItem item = shoppingCart.get(id);
+		if(null!=item) {
+			shoppingCart.remove(id, item);
+			System.out.println("该商品已从购物车中删除！");
+		}else {
+			System.out.println("删除失败！，该购物车中没有此商品！");
+		}
 	}
 	
 }

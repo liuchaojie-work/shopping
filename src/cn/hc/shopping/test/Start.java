@@ -60,7 +60,7 @@ public class Start {
 				break;
 			case 8:
 				System.out.println("删除购物车中的商品");
-				showCartItem();
+				delCartItem();
 				break;
 			case 9:
 				System.out.println("退出");
@@ -70,6 +70,14 @@ public class Start {
 				break;
 			}
 		}while(true);
+	}
+	private static void delCartItem() {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入商品的编号：");
+		int id = sc.nextInt();
+		CartItemDao cartItemDao = new CartItemDaoImpl();
+		cartItemDao.delCartItemById(id);
 	}
 	private static void alterProductStockById() {
 		// TODO Auto-generated method stub
