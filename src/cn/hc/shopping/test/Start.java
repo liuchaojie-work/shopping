@@ -1,9 +1,14 @@
 package cn.hc.shopping.test;
+import java.util.Collection;
 import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
+import cn.hc.shopping.dao.CartItemDao;
 import cn.hc.shopping.dao.ProductDao;
+import cn.hc.shopping.dao.impl.CartItemDaoImpl;
 import cn.hc.shopping.dao.impl.ProductDaoImpl;
+import cn.hc.shopping.entity.CartItem;
 import cn.hc.shopping.entity.Product;
 
 public class Start {
@@ -39,6 +44,7 @@ public class Start {
 				break;
 			case 5:
 				System.out.println("显示购物车");
+				showCartItem();
 				break;
 			case 6:
 				System.out.println("退出");
@@ -48,6 +54,28 @@ public class Start {
 			}
 		}while(true);
 	}
+	
+	//从后台获取购物车信息，并在前台输出
+	private static void showCartItem() {
+		// TODO Auto-generated method stub
+		//从后台获取购物车信息
+		CartItemDao cartItemDao=new CartItemDaoImpl();
+		Map<Integer,CartItem> shoppingCart = cartItemDao.findAllCartItem();
+		//在前台输出
+		Collection<CartItem> items = shoppingCart.values();
+		System.out.println("商品编号\t商品名称\t商品颜色\t商品价格\t数量\t小计");
+		//总计：1.给定初始值
+		double total = 0;
+		for(CartItem item:items) {
+			System.out.println(item.getId()+"\t"+item.getName()+"\t"+item.getColor()
+				+"\t"+item.getPrice()+"\t"+item.getAmount()+"\t"+item.getPrice()*item.getAmount());
+			//总计：2.累计小计
+			total+=item.getPrice()*item.getAmount();
+		}
+		//总计：3.输出
+		System.out.println("\t\t\t\t总计：    "+total);
+	}
+	
 	private static void addProduct() {
 		// TODO Auto-generated method stub
 		//在前台输入商品相关信息
