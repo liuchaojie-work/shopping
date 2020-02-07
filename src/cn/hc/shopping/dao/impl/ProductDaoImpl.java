@@ -1,7 +1,10 @@
-package cn.hc.shopping;
+package cn.hc.shopping.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import cn.hc.shopping.dao.ProductDao;
+import cn.hc.shopping.entity.Product;
 
 public class ProductDaoImpl implements ProductDao{
 	

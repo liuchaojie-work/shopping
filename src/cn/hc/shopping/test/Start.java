@@ -1,6 +1,11 @@
-package cn.hc.shopping;
+package cn.hc.shopping.test;
 import java.util.List;
 import java.util.Scanner;
+
+import cn.hc.shopping.dao.ProductDao;
+import cn.hc.shopping.dao.impl.ProductDaoImpl;
+import cn.hc.shopping.entity.Product;
+
 public class Start {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

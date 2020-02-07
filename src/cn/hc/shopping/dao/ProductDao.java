@@ -1,6 +1,8 @@
-package cn.hc.shopping;
+package cn.hc.shopping.dao;
 
 import java.util.List;
+
+import cn.hc.shopping.entity.Product;
 
 public interface ProductDao {
 	//增加产品

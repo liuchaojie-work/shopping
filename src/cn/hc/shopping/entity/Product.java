@@ -1,4 +1,4 @@
-package cn.hc.shopping;
+package cn.hc.shopping.entity;
 
 
 /**
