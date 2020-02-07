@@ -41,6 +41,7 @@ public class Start {
 				break;
 			case 4:
 				System.out.println("添加到购物车");
+				addCartItem();
 				break;
 			case 5:
 				System.out.println("显示购物车");
@@ -54,7 +55,25 @@ public class Start {
 			}
 		}while(true);
 	}
-	
+	//添加购物车条目
+	private static void addCartItem() {
+		// TODO Auto-generated method stub
+		//输入要购买的商品的编号和数量
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入商品的编号：");
+		int id = sc.nextInt();
+		System.out.println("请输入要购买的数量：");
+		int amount = sc.nextInt();
+		//根据编号获取商品的其他信息
+		ProductDao productDao = new ProductDaoImpl();
+		Product product = productDao.findProductById(id);
+		//构建一个条目
+		CartItem item = new CartItem(id, product.getName(),product.getPrice(),product.getColor(),amount);
+		//调用后台添加条目
+		CartItemDao cartItemDao = new CartItemDaoImpl();
+		cartItemDao.addCartItem(item);
+	}
+
 	//从后台获取购物车信息，并在前台输出
 	private static void showCartItem() {
 		// TODO Auto-generated method stub
