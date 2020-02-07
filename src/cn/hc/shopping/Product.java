@@ -1,4 +1,6 @@
 package cn.hc.shopping;
+
+
 /**
  *  …Ã∆∑¿‡
  * @author L1471
@@ -109,6 +111,5 @@ public class Product implements Comparable<Product>{
 		// TODO Auto-generated method stub
 		return this.id-o.id;
 	}
-	
-	
+
 }
