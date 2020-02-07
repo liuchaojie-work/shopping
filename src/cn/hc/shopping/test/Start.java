@@ -21,7 +21,10 @@ public class Start {
 			System.out.println("\t3.查看指定编号商品");
 			System.out.println("\t4.添加到购物车");
 			System.out.println("\t5.显示购物车");
-			System.out.println("\t6.退出");
+			System.out.println("\t6.删除商品");
+			System.out.println("\t7.修改商品库存");
+			System.out.println("\t8.删除购物车中的商品");
+			System.out.println("\t9.退出");
 			System.out.println("=======================");
 			System.out.println("请选择：");
 			
@@ -48,7 +51,20 @@ public class Start {
 				showCartItem();
 				break;
 			case 6:
+				System.out.println("删除商品");
+				showCartItem();
+				break;
+			case 7:
+				System.out.println("修改商品库存");
+				showCartItem();
+				break;
+			case 8:
+				System.out.println("删除购物车中的商品");
+				showCartItem();
+				break;
+			case 9:
 				System.out.println("退出");
+				System.exit(0);
 			default:
 				System.out.println("输入错误");
 				break;

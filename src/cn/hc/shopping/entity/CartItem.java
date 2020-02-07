@@ -1,7 +1,5 @@
 package cn.hc.shopping.entity;
 
-import java.util.LinkedHashMap;
-
 /**
  * 购物车条目类
  * @author L1471

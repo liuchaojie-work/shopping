@@ -1,6 +1,5 @@
 package cn.hc.shopping.dao;
 
-import java.util.LinkedHashMap;
 import java.util.Map;
 
 import cn.hc.shopping.entity.CartItem;
