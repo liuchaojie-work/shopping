@@ -1,4 +1,5 @@
 package cn.hc.shopping;
+import java.util.List;
 import java.util.Scanner;
 public class Start {
 	public static void main(String[] args) {
@@ -21,6 +22,7 @@ public class Start {
 				break;
 			case 2:
 				System.out.println("查看所有商品");
+				showAllProduct();
 				break;
 			case 3:
 				System.out.println("查看指定编号商品");
@@ -38,5 +40,19 @@ public class Start {
 				break;
 			}
 		}while(true);
+	}
+	/**
+	 * 获取后台商品信息，再进行输出
+	 */
+	public static void showAllProduct() {
+		//获取后台的商品信息
+		ProductDao productDao = new ProductDaoImpl();
+		List<Product> productList = productDao.findAllProduct();
+		//输出商品信息
+		System.out.println("商品编号\t商品名称\t商品价格\t商品颜色\t商品库存");
+		for(Product product:productList) {
+			System.out.println(product.getId()+"\t"+product.getName()+"\t"+product.getPrice()
+			+"\t"+product.getColor()+"\t"+product.getStock());
+		}
 	}
 }
