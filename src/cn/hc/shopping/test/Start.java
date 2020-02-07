@@ -67,11 +67,15 @@ public class Start {
 		//根据编号获取商品的其他信息
 		ProductDao productDao = new ProductDaoImpl();
 		Product product = productDao.findProductById(id);
-		//构建一个条目
-		CartItem item = new CartItem(id, product.getName(),product.getPrice(),product.getColor(),amount);
-		//调用后台添加条目
-		CartItemDao cartItemDao = new CartItemDaoImpl();
-		cartItemDao.addCartItem(item);
+		if(null==product) {
+			System.out.println("该编号商品不存在，添加购物车失败！");
+		}else {
+			//构建一个条目
+			CartItem item = new CartItem(id, product.getName(),product.getPrice(),product.getColor(),amount);
+			//调用后台添加条目
+			CartItemDao cartItemDao = new CartItemDaoImpl();
+			cartItemDao.addCartItem(item);
+		}		
 	}
 
 	//从后台获取购物车信息，并在前台输出
