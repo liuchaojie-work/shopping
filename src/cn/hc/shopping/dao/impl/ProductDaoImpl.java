@@ -63,8 +63,19 @@ public class ProductDaoImpl implements ProductDao{
 		}
 	}
 	@Override
-	public void alterProductStockById(int id) {
+	public void alterProductStockById(int id, int changeNum) {
 		// TODO Auto-generated method stub
-		
-	}	
+		Product product=findProductById(id);
+		if(null!=product) {
+			if((product.getStock()+changeNum)>=0) {
+				product.setStock(product.getStock()+changeNum);
+				System.out.println("该商品库存修改成功！");
+			}else {
+				System.out.println("修改库存失败！库存不足！");
+			}	
+		}else {
+			System.out.println("修改库存失败！，该商品不存在！");
+		}
+	}
+
 }

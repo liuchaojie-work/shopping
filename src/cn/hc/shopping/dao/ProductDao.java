@@ -14,5 +14,5 @@ public interface ProductDao {
 	//根据id查找产品
 	public Product findProductById(int id);
 	//根据id修改产品库存
-	public void alterProductStockById(int id);
+	public void alterProductStockById(int id, int changeNum);
 }

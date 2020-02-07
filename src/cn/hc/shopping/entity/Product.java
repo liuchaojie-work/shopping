@@ -55,7 +55,11 @@ public class Product implements Comparable<Product>{
 		return stock;
 	}
 	public void setStock(int stock) {
-		this.stock = stock;
+		if(stock<0) {
+			this.stock=0;
+		}else {
+			this.stock = stock;
+		}	
 	}
 
 	@Override

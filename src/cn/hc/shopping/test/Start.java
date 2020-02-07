@@ -56,7 +56,7 @@ public class Start {
 				break;
 			case 7:
 				System.out.println("修改商品库存");
-				showCartItem();
+				alterProductStockById();
 				break;
 			case 8:
 				System.out.println("删除购物车中的商品");
@@ -70,6 +70,16 @@ public class Start {
 				break;
 			}
 		}while(true);
+	}
+	private static void alterProductStockById() {
+		// TODO Auto-generated method stub
+		Scanner sc = new Scanner(System.in);
+		System.out.println("请输入商品的编号：");
+		int id = sc.nextInt();
+		System.out.println("请输入库存的改变量(入库+num;出库-num)：");
+		int num = sc.nextInt();
+		ProductDao productDao = new ProductDaoImpl();
+		productDao.alterProductStockById(id, num);;
 	}
 	private static void delProductById() {
 		// TODO Auto-generated method stub
