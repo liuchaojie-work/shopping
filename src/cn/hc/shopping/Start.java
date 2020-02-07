@@ -26,6 +26,7 @@ public class Start {
 				break;
 			case 3:
 				System.out.println("查看指定编号商品");
+				showProductById();
 				break;
 			case 4:
 				System.out.println("添加到购物车");
@@ -41,6 +42,28 @@ public class Start {
 			}
 		}while(true);
 	}
+	/**
+	 * 获取指定编号商品信息，再进行输出
+	 */
+	public static void showProductById() {
+		//输入要查询的商品编号
+		Scanner num = new Scanner(System.in);
+		System.out.println("请输入要查询的商品的编号：");
+		int id = num.nextInt();
+		//获取该编号的商品信息
+		ProductDao productDao = new ProductDaoImpl();
+		Product product = productDao.findProductById(id);
+		//输出商品信息
+		if(null==product) {
+			System.out.println("该编号的商品不存在！");
+		}else {
+			System.out.println("商品编号\t商品名称\t商品价格\t商品颜色\t商品库存");
+			System.out.println(product.getId()+"\t"+product.getName()+"\t"+product.getPrice()
+				+"\t"+product.getColor()+"\t"+product.getStock());
+		}
+		
+	}
+	
 	/**
 	 * 获取后台商品信息，再进行输出
 	 */

@@ -22,8 +22,15 @@ public class ProductDaoImpl implements ProductDao{
 	public List<Product> findAllProduct(){
 		return productList;
 	}
-	//根据id查找产品
-	public List<Product> findProductById(int id) {
+	//根据id查找产品,不能使用ProductList.get(id),因为这是按照索引查找
+	public Product findProductById(int id) {
+		//逐个比较，效率低
+		for(int i=0;i<productList.size();i++) {
+			Product product = productList.get(i);
+			if(product.getId()==id) {
+				return product;
+			}
+		}
 		return null;
 	}	
 }

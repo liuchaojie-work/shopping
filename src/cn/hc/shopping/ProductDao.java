@@ -8,5 +8,5 @@ public interface ProductDao {
 	//查找所有产品的信息
 	public List<Product> findAllProduct();
 	//根据id查找产品
-	public List<Product> findProductById(int id);
+	public Product findProductById(int id);
 }
