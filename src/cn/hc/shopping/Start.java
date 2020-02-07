@@ -19,6 +19,7 @@ public class Start {
 			switch (num) {
 			case 1:
 				System.out.println("添加商品");
+				addProduct();
 				break;
 			case 2:
 				System.out.println("查看所有商品");
@@ -41,6 +42,27 @@ public class Start {
 				break;
 			}
 		}while(true);
+	}
+	private static void addProduct() {
+		// TODO Auto-generated method stub
+		//在前台输入商品相关信息
+		Scanner sc=new Scanner(System.in);
+		System.out.println("请输入商品编码：");
+		int id = sc.nextInt();
+		System.out.println("请输入商品名称：");
+		String name = sc.next();
+		System.out.println("请输入商品价格：");
+		double price = sc.nextDouble();
+		System.out.println("请输入商品颜色：");
+		String color = sc.next();
+		System.out.println("请输入商品库存：");
+		int stock = sc.nextInt();
+		//将商品信息写入后台
+		Product product = new Product(id, name, price, color, stock);
+		ProductDao productDao = new ProductDaoImpl();
+		productDao.addProduct(product);
+		//输出结果
+		//System.out.println("添加成功！");
 	}
 	/**
 	 * 获取指定编号商品信息，再进行输出

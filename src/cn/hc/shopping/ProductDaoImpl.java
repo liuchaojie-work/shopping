@@ -14,9 +14,24 @@ public class ProductDaoImpl implements ProductDao{
 		productList.add(new Product(2, "本子", 1, "白色", 10000));
 		productList.add(new Product(3, "笔芯", 0.5, "黑色", 50000));
 	}
+	//list语法不唯一，可通过编码判断来实现唯一（遍历list,查看商品编号是否存在）
 	//增加产品
 	public void addProduct(Product product) {
-		
+		//判断集合中是否已经有指定id的商品
+		boolean flag=false;
+		for(int i=0;i<productList.size();i++) {
+			Product pro = productList.get(i);
+			if(pro.getId()==product.getId()) {
+				flag=true;
+				break;
+			}
+		}
+		if(flag) {
+			System.out.println("该编号的商品已存在！");
+		}else {
+			productList.add(product);
+			System.out.println("添加成功！");
+		}
 	}
 	//查找所有产品的信息
 	public List<Product> findAllProduct(){
