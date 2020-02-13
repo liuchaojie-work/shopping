@@ -1,10 +1,16 @@
 package cn.hc.shopping.dao.impl;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.Reader;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.List;
 
 import cn.hc.shopping.dao.ProductDao;
@@ -67,10 +73,50 @@ public class ProductIODaoImpl implements ProductDao{
 		
 	}
 
+	/**
+	 * 获取商品信息
+	 * 1.使用输入流来读文件，一行一行读，使用BufferedReader
+	 * 2.将商品信息保存为对象
+	 * 3.每个product放入集合
+	 */
 	@Override
 	public List<Product> findAllProduct() {
 		// TODO Auto-generated method stub
-		return null;
+		//创建一个集合，存放所有的商品信息ArrayList
+		List<Product> productList=new ArrayList<Product>();
+		//创建输入流读取文件并将商品信息放入集合
+		
+		BufferedReader br=null;
+		try {
+			Reader r = new FileReader(file);
+			br=new BufferedReader(r);
+			String str = br.readLine();
+			while(null!=str) {
+				String arr[] = str.split("#");
+				Product product = new Product();
+				product.setId(Integer.parseInt(arr[0]));
+				product.setName(arr[1]);
+				product.setPrice(Double.parseDouble(arr[2]));
+				product.setColor(arr[3]);
+				product.setStock(Integer.parseInt(arr[4]));
+				productList.add(product);
+				str=br.readLine();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(null!=br) {
+					br.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}	
+		//返回商品列表
+		return productList;
 	}
 
 	@Override
