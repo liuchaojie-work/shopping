@@ -122,7 +122,41 @@ public class ProductIODaoImpl implements ProductDao{
 	@Override
 	public Product findProductById(int id) {
 		// TODO Auto-generated method stub
-		return null;
+		Product product=null;
+		//创建输入流读取文件并将商品信息放入集合
+		
+		BufferedReader br=null;
+		try {
+			Reader r = new FileReader(file);
+			br=new BufferedReader(r);
+			String str = br.readLine();
+			while(null!=str) {
+				String arr[] = str.split("#");
+				if(id==Integer.parseInt(arr[0])) {
+					product = new Product();
+					product.setId(Integer.parseInt(arr[0]));
+					product.setName(arr[1]);
+					product.setPrice(Double.parseDouble(arr[2]));
+					product.setColor(arr[3]);
+					product.setStock(Integer.parseInt(arr[4]));
+					break;
+				}
+				str=br.readLine();
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				if(null!=br) {
+					br.close();
+				}
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}			
+		return product;
 	}
 
 	@Override
