@@ -24,7 +24,8 @@ public class StartIO {
 			System.out.println("\t6.删除商品");
 			System.out.println("\t7.修改商品库存");
 			System.out.println("\t8.删除购物车中的商品");
-			System.out.println("\t9.退出");
+			System.out.println("\t9.保存到购物车");
+			System.out.println("\t10.退出");
 			System.out.println("=======================");
 			System.out.println("请选择：");
 			
@@ -63,6 +64,10 @@ public class StartIO {
 				delCartItem();
 				break;
 			case 9:
+				System.out.println("保存到购物车");
+				saveCartItem();
+				break;
+			case 10:
 				System.out.println("退出");
 				System.exit(0);
 			default:
@@ -70,6 +75,11 @@ public class StartIO {
 				break;
 			}
 		}while(true);
+	}
+	private static void saveCartItem() {
+		// TODO Auto-generated method stub
+		//直接调用后台，完成保存操作
+		cartItemDao.saveCarItem();
 	}
 	static CartItemDao cartItemDao = new CartItemIODaoImpl();
 	private static void delCartItem() {

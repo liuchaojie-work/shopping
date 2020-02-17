@@ -1,11 +1,13 @@
 package cn.hc.shopping.entity;
 
+import java.io.Serializable;
+
 /**
  * 购物车条目类
  * @author L1471
  *
  */
-public class CartItem implements Comparable<CartItem>{
+public class CartItem implements Comparable<CartItem>,Serializable{
 	private int id;
 	private String name;
 	private double price;
