@@ -47,5 +47,10 @@ public class CartItemDaoImpl implements CartItemDao{
 			System.out.println("删除失败！，该购物车中没有此商品！");
 		}
 	}
+	@Override
+	public void saveCarItem() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

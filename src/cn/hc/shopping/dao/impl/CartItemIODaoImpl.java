@@ -5,7 +5,7 @@ import java.util.Map;
 import cn.hc.shopping.dao.CartItemDao;
 import cn.hc.shopping.entity.CartItem;
 
-public class CartItemIODaoimpl implements CartItemDao{
+public class CartItemIODaoImpl implements CartItemDao{
 
 	@Override
 	public void addCartItem(CartItem item) {
@@ -21,6 +21,12 @@ public class CartItemIODaoimpl implements CartItemDao{
 
 	@Override
 	public void delCartItemById(int id) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void saveCarItem() {
 		// TODO Auto-generated method stub
 		
 	}

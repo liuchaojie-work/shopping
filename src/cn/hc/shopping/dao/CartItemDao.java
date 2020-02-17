@@ -19,5 +19,9 @@ public interface CartItemDao {
 	 * 删除购物车中的条目
 	 */
 	public void delCartItemById(int id);
+	/**
+	 * 保存购物车
+	 */
+	public void saveCarItem();
 	
 }

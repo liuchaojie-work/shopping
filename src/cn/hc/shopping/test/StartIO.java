@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 import cn.hc.shopping.dao.CartItemDao;
 import cn.hc.shopping.dao.ProductDao;
-import cn.hc.shopping.dao.impl.CartItemIODaoimpl;
+import cn.hc.shopping.dao.impl.CartItemIODaoImpl;
 import cn.hc.shopping.dao.impl.ProductIODaoImpl;
 import cn.hc.shopping.entity.CartItem;
 import cn.hc.shopping.entity.Product;
@@ -71,7 +71,7 @@ public class StartIO {
 			}
 		}while(true);
 	}
-	static CartItemDao cartItemDao = new CartItemIODaoimpl();
+	static CartItemDao cartItemDao = new CartItemIODaoImpl();
 	private static void delCartItem() {
 		// TODO Auto-generated method stub
 		Scanner sc = new Scanner(System.in);
