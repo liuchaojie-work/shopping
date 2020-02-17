@@ -70,7 +70,22 @@ public class ProductIODaoImpl implements ProductDao{
 	@Override
 	public void delProductById(int id) {
 		// TODO Auto-generated method stub
-		
+		Product pro=findProductById(id);
+		if(null==pro) {
+			System.out.println("该商品不存在！删除失败！");
+		}
+		else {
+			List<Product> productList=findAllProduct();
+			productList.remove(pro);
+			if(file.exists()) {
+				file.delete();
+				file=new File("product.txt");
+			}
+			for(Product p:productList) {
+				addProduct(p);
+			}
+			System.out.println("删除成功！");
+		}
 	}
 
 	/**
@@ -162,7 +177,23 @@ public class ProductIODaoImpl implements ProductDao{
 	@Override
 	public void alterProductStockById(int id, int changeNum) {
 		// TODO Auto-generated method stub
-		
+		Product pro=findProductById(id);
+		if(null==pro) {
+			System.out.println("该商品不存在！");
+		}else {
+			List<Product> proList=findAllProduct();
+			if(file.exists()) {
+				file.delete();
+				file=new File("product.txt");
+			}
+			for(Product p:proList) {
+				if(p.getId()==id) {
+					p.setStock(pro.getStock()+changeNum);
+				}
+				addProduct(p);
+			}
+			System.out.println("修改库存成功！");
+		}
 	}
 
 }
